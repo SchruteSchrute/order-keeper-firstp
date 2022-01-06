@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/yy_text_or_background"
+
+    tools:ignore="MissingDefaultResource">
+    <RelativeLayout
+        android:id="@+id/RLtopLine"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/yy_deep_ocean">
+        <TextView
+            android:text="Общая сумма: "
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:id="@+id/sumText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="23dp"
+            />
+        <TextView
+            android:text="1234"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:id="@+id/tvDaySum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="13dp"
+            android:layout_toEndOf="@id/sumText"
+            />
+
+        <TextView
+            android:text="Вcего заказов: "
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:id="@+id/ableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/tvDaySum"
+            android:layout_marginStart="30dp"
+            />
+        <TextView
+            android:text="1234"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:id="@+id/tvDayTableCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ableText"
+            android:layout_marginStart="13dp"
+
+            />
+
+        <TextView
+            android:text="1234"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="33dp"
+            android:id="@+id/tvDayTerm"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dp"
+            />
+        <TextView
+            android:text="Наличными :"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="13dp"
+            android:layout_toStartOf="@+id/tvDayCash"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="4dp"
+            />
+        <TextView
+            android:text="1234"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="33dp"
+            android:id="@+id/tvDayCash"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="4dp"
+            />
+        <TextView
+            android:text="Терминалом :"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="13dp"
+            android:layout_toStartOf="@+id/tvDayTerm"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dp"
+            />
+
+
+
+
+    </RelativeLayout>
+    <Button
+        android:text="clear table"
+        android:onClick="deleteTableStat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
+    <Button
+        android:text="read table"
+        android:onClick="readTableStat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
+    <LinearLayout
+        android:id="@+id/cont_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/yy_text_or_background"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/tableCont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

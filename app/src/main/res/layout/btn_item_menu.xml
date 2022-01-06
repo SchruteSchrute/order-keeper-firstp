@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameItemBtm"
+    android:layout_width="75dp"
+    android:layout_height="75dp"
+    tools:ignore="DuplicateIds"
+    android:background="@drawable/ic_btn_item_back"
+    android:layout_margin="5dp"
+    >
+
+    <ImageButton
+        android:onClick="addChild"
+        android:id="@+id/btnImageItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_btnmenuitem"
+        />
+    <TextView
+        android:id="@+id/tvPricebtnItem"
+        android:layout_width="34dp"
+        android:layout_height="25dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="5dp"
+        android:textSize="13dp"
+        android:text="45"
+        android:textColor="@color/yy_text_dark"
+        android:fontFamily="@font/notosans_regular"
+
+        />
+
+    <TextView
+        android:id="@+id/tvNamebtnItem"
+        android:layout_width="match_parent"
+        android:layout_height="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:text="Капуsd fssdfdfds"
+        android:textColor="@color/yy_text_dark"
+        android:fontFamily="@font/notosans_regular"
+        android:textSize="11dp" />
+</FrameLayout>

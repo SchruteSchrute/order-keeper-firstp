@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:background="@drawable/ic_bottom_tableitem_background"
+    android:id="@+id/llChild">
+    <TextView
+        android:id="@+id/tvItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/yy_text_dark"
+        android:fontFamily="@font/notosans_bold"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="4dp"
+        android:textSize="15dp"
+        android:text="Капучинотест"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/tvItemCount"
+        android:text="34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/yy_text_dark"
+        android:textSize="20dp"
+        android:fontFamily="@font/notosans_bold"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/btnMinus"
+        android:layout_marginRight="15dp"
+
+        />
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:onClick="minusCounter"
+        android:layout_width="25dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_minustableitem_icon"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="7dp"
+        android:layout_alignParentRight="true"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llParent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    <RelativeLayout
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_openedtable_background"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true">
+            <TextView
+                android:text="TABLE % 1"
+                android:id="@+id/tvParent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="5dp"
+                android:textSize="13dp"
+                android:fontFamily="@font/notosans_regular"
+                android:textColor="@color/yy_text_dark"/>
+            <TextView
+                android:id="@+id/tvSumTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сумма: "
+                android:textSize="13dp"
+                android:textColor="@color/yy_text_dark"
+                android:fontFamily="@font/notosans_bold"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="2dp"
+                />
+            <TextView
+                android:id="@+id/tvsum"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
+                android:layout_toEndOf="@id/tvSumTable"
+                android:fontFamily="@font/notosans_bold"
+                android:textColor="@color/yy_text_dark"
+                android:textSize="13dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" грн"
+                android:textSize="13dp"
+                android:textColor="@color/yy_text_dark"
+                android:fontFamily="@font/notosans_bold"
+                android:layout_toEndOf="@+id/tvsum"
+                android:layout_marginBottom="2dp"
+                android:layout_alignParentBottom="true"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:onClick="groupSelected"
+            android:id="@+id/btnExpand"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ic_closetable_icon"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/btnCloseTable"
+            android:layout_marginRight="15dp"
+            />
+        <RelativeLayout
+            android:onClick="tableCloseDelete"
+            android:id="@+id/btnCloseTable"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/ic_done_icon"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/btnDelTable"
+            android:layout_marginRight="5dp"
+            />
+        <RelativeLayout
+            android:onClick="tableCloseDelete"
+            android:id="@+id/btnDelTable"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/ic_trash_icon"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/llParentItem"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_gravity="center_horizontal"
+        >
+
+    </LinearLayout>
+</LinearLayout>

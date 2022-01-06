@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:ignore="MissingDefaultResource" >
+
+    <EditText
+        android:id="@+id/editName"
+        android:text="Название"
+        android:textColor="@color/white"
+        android:fontFamily="@font/notosans_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        />
+    <EditText
+        android:id="@+id/editPrice"
+        android:text="Цена"
+        android:fontFamily="@font/notosans_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/editName"
+        android:layout_marginTop="40dp"
+        />
+    <Spinner
+        android:id="@+id/spinGroup"
+        android:fontFamily="@font/notosans_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/editPrice"
+        android:layout_marginTop="40dp"
+        />
+    <Button
+        android:onClick="addNamePrice"
+        android:id="@+id/btnAddNamePrice"
+        android:fontFamily="@font/notosans_bold"
+        android:text="Добавить пункт"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/spinGroup"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDeleteAll"
+        android:text="delete all menu"
+        android:onClick="deleteAll"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"/>
+</RelativeLayout>

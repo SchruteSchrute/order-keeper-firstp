@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+    <RelativeLayout
+        android:layout_width="180dp"
+        android:layout_height="23dp"
+        android:background="@drawable/ic_groupname_background">
+
+        <TextView
+            android:id="@+id/tvGroupName"
+            android:textSize="11dp"
+            android:text="напитки"
+            android:textAllCaps="true"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/yy_text_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/linearGroup"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMenuGroupContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="7dp">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/widgetFlowGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="visible"
+
+            app:flow_horizontalGap="10dp"
+            app:flow_verticalGap="10dp"
+
+            app:flow_horizontalBias="0"
+            app:flow_horizontalStyle="packed"
+            app:flow_verticalStyle="packed"
+            app:flow_wrapMode="chain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
