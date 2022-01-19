@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
+    static final String DB_NAME = "dbmenu";
 
     // closed orders table
     static final String CO_TABLE_NAME = "table_stat";
@@ -16,7 +17,6 @@ public class DBHelper extends SQLiteOpenHelper {
     static final String CO_DATE_TIME = "datetime";
 
     //menu data table
-    static final String DB_NAME = "dbmenu";
 
     static final String GROUP = "groupname";
     static final String NAME = "name";

@@ -121,6 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/yy_menu_main_background">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="13dp"
@@ -143,6 +144,16 @@
                     android:layout_marginStart="10dp"
                     />
             </ScrollView>
+
+            <RelativeLayout
+                android:onClick="addItem"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_icon_plus_round"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
 
 

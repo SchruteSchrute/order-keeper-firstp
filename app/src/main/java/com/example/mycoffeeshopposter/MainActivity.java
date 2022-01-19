@@ -8,13 +8,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.Layout;
+
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -36,14 +35,7 @@ import com.example.mycoffeeshopposter.objects.MenuGroupContainer;
 import com.example.mycoffeeshopposter.objects.SaledItem;
 import com.example.mycoffeeshopposter.objects.Table;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -100,7 +92,6 @@ public class MainActivity extends AppCompatActivity  {
         Intent intent = new Intent(this, ActivityWorkDayStat.class);
         startActivity(intent);
     }
-    //------------------------------- метод создания вью в меню, взятых с базы данных. Нужно перенести движуху в дбМенеджер
     private void createMenu(){
         llMenuMainCont.removeAllViews();
         menuGroupKeeper.clear();
@@ -174,65 +165,6 @@ public class MainActivity extends AppCompatActivity  {
         clMenuGroupCont.addView(itemView);
         flowGroup.addView(itemView);
     }
-
-    private void createMenuOld(){
-        lLMenuContainer.removeAllViews();
-        LayoutInflater inflaterMenu = getLayoutInflater();
-        View inflaterFlowView = inflaterMenu.inflate(R.layout.widget_flow_menu,
-                lLMenuContainer, false);
-
-        lLMenuContainer.addView(inflaterFlowView);
-     //   widgetFlow = findViewById(R.id.widgetFlow);
-
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getReadableDatabase();
- //       dbHelper.createTableStat(db);
-        Cursor cursor = db.query(DBHelper.TABLE_NAME, null, null,
-                null, null, null, null);
-        if (cursor.moveToFirst()){
-
-            String tagName;
-            int tagPrice;
-            int tagID;
-
-            int IDname = cursor.getColumnIndex(DBHelper.NAME);
-            int IDprice = cursor.getColumnIndex(DBHelper.PRICE);
-            int ID = cursor.getColumnIndex("id");
-
-            do {
-                tagID = cursor.getInt(ID);
-                tagName = cursor.getString(IDname);
-                tagPrice = cursor.getInt(IDprice);
-
-                Item item = new Item();
-                item.item(tagName, tagPrice);
-
-                View menuItemBtn = inflaterMenu.inflate(R.layout.btn_item_menu, lLMenuContainer, false);
-                menuItemBtn.setId(View.generateViewId());
-
-                tvbtnName = menuItemBtn.findViewById(R.id.tvNamebtnItem);
-                tvbtnName.setText(tagName);
-
-                tvbtnPrice = menuItemBtn.findViewById(R.id.tvPricebtnItem);
-                tvbtnPrice.setText(String.valueOf(tagPrice));
-
-                imVbtnItem = menuItemBtn.findViewById(R.id.btnImageItem);
-                imVbtnItem.setTag(R.id.tagItemKey, item);
-                imVbtnItem.setTag(R.id.tagIDkey, tagID);
-                registerForContextMenu(imVbtnItem);
-
-                lLMenuContainer.addView(menuItemBtn);
-            //    widgetFlow.addView(menuItemBtn);
-            } while (cursor.moveToNext());
-
-            Toast.makeText(this, "--- MENU CREATED ---", Toast.LENGTH_SHORT).show();
-        } else Toast.makeText(this, "--- NO ITEM FOUND ---", Toast.LENGTH_SHORT).show();
-
-        dbHelper.close();
-        db.close();
-        cursor.close();
-    }
-
     //-------------------   контекстное меню значится. Нужно дописать изменение имени и перенести методы в дбМенеджер
 
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
@@ -249,7 +181,7 @@ public class MainActivity extends AppCompatActivity  {
         db = dbHelper.getReadableDatabase();
         switch (item.getItemId()) {
             case 1:
-                db.execSQL("DELETE FROM " + DBHelper.TABLE_NAME + " WHERE " + DBHelper.NAME + " LIKE'" + currentItem.getNameItem() + "';");
+                db.delete(DBHelper.TABLE_NAME, DBHelper.NAME + " = ?", new String[]{ currentItem.getNameItem() });
                 dbHelper.close();
                 db.close();
                 createMenu();
@@ -258,19 +190,26 @@ public class MainActivity extends AppCompatActivity  {
             case 2:
                 // TODO дописать замену
                 AlertDialog.Builder alDialChangeName = new AlertDialog.Builder(this);
-                final EditText editTextNewname = new EditText(this);
-                editTextNewname.setText(currentItem.getNameItem());
-                editTextNewname.setInputType(InputType.TYPE_CLASS_TEXT);
-                alDialChangeName.setView(editTextNewname);
+                final EditText editName = new EditText(this);
+                editName.setText(currentItem.getNameItem());
+                editName.setInputType(InputType.TYPE_CLASS_TEXT);
+
+                final EditText editPrice = new EditText(this);
+                editPrice.setText(String.valueOf(currentItem.getPriceItem()));
+                editPrice.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                alDialChangeName.setView(editName);
+                //alDialChangeName.setView(editPrice);
 
                 alDialChangeName.setPositiveButton("Сохранить", (dialog, which) -> {
-                    String newname = editTextNewname.getText().toString();
-                    // НЕ РАБОТАЕТ ЗАМЕНА ИМЕНИ
-                    db.execSQL("ALTER TABLE'" + DBHelper.TABLE_NAME + "' RENAME COLUMN'" + TAG + "' TO "+ newname);
+                    ContentValues cv = new ContentValues();
+                    cv.put(DBHelper.NAME, editName.getText().toString());
+                    cv.put(DBHelper.NAME, editPrice.getText().toString());
+                    db.update(DBHelper.TABLE_NAME, cv, DBHelper.NAME + " = ?", new String[]{currentItem.getNameItem()});
+                    cv.clear();
                     dbHelper.close();
                     db.close();
                     createMenu();
-
                 });
 
                 alDialChangeName.setNegativeButton("Отмена", (dialog, which) -> {
@@ -283,7 +222,6 @@ public class MainActivity extends AppCompatActivity  {
             case 3:
                 addItem(null);
                 break;
-
         }
         return super.onContextItemSelected(item);
     }
